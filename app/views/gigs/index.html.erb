@@ -1,0 +1,7 @@
+<h1>List of Gigs</h1> 
+
+<% @gigs.each do |gig| %>
+  <%= gig.name %>
+<% end %>
+<br>
+<%= link_to("Add new Gig", new_gig_path) %>
