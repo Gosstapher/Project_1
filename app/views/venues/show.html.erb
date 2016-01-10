@@ -1,0 +1,12 @@
+<h1><%= @venue.name %></h1>
+<div>
+  <p><%= @venue.image %></p>
+  <br>
+  <p><%= @venue.description %></p>
+  <br>
+  <p><%= @venue.location %></p>
+
+</div>
+
+<%= link_to("Edit #{@venue.name}", edit_venue_path(@venue)) %><br>
+<%= button_to("Delete #{@venue.name} ?", venue_path(@venue), method: :delete, data: {confirm: 'Delete #{@venue.name}? Are you sure?!'}) %>

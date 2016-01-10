@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :artists
   resources :users
   resources :bookings
+  resources :genres
+
 
 
 
