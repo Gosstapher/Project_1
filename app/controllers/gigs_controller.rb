@@ -20,12 +20,21 @@ class GigsController < ApplicationController
   end
 
   def edit
+    @gig = Gig.new
+    @venues = Venue.all
+    @artists = Artist.all
+    @genre = Genre.all
   end
 
   def update
+    Gig.update(gig_params)
+    redirect_to(gigs_path)
   end
 
   def destroy
+    @gig = Gig.find(params[:id])
+    @gig.destroy
+    redirect_to(gigs_path)
   end
 
   private

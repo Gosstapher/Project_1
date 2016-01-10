@@ -1,7 +1,8 @@
 <h1>List of Gigs</h1> 
 
 <% @gigs.each do |gig| %>
-  <%= gig.name %>
+  <%= link_to("#{gig.name}", gig_path(gig)) %>
+  <br>
 <% end %>
 <br>
 <%= link_to("Add new Gig", new_gig_path) %>
