@@ -1,0 +1,8 @@
+<h1>List of Bookings</h1> 
+
+<% @bookings.each do |booking| %>
+  <%= link_to("#{booking.id}", booking_path(booking)) %>
+  <br>
+<% end %>
+<br>
+<%= link_to("Add new booking", new_booking_path) %>

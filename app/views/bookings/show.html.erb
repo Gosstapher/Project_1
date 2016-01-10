@@ -1,0 +1,10 @@
+<h1><%= @booking.id %></h1>
+<div>
+  <p><%= @booking.user.name %></p>
+  <br>
+  <p><%= @booking.gig.name %></p>
+
+</div>
+
+<%= link_to("Edit #{@booking.id}", edit_booking_path(@booking)) %><br>
+<%= button_to("Delete #{@booking.id} ?", booking_path(@booking), method: :delete, data: {confirm: 'Delete #{@booking.id}? Are you sure?!'}) %>
