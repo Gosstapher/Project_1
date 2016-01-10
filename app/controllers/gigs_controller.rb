@@ -5,9 +5,6 @@ class GigsController < ApplicationController
 
   def new
     @gig = Gig.new
-    @venues = Venue.all
-    @artists = Artist.all
-    @genre = Genre.all
   end
 
   def create
@@ -20,10 +17,7 @@ class GigsController < ApplicationController
   end
 
   def edit
-    @gig = Gig.new
-    @venues = Venue.all
-    @artists = Artist.all
-    @genre = Genre.all
+    @gig = Gig.find(params[:id])
   end
 
   def update

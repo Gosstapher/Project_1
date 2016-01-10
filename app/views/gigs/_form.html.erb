@@ -1,5 +1,21 @@
 <%= form_for @gig do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <br>
+  <%= f.label :venue_id %>
+  <%= f.select :venue_id, Venue.all.map {|v| [v.name, v.id] } %>
+  <br>
+  <%= f.label :genre_id %>
+  <%= f.select :genre_id, Genre.all.map {|g| [g.name, g.id] } %>
+  <br>
+  <%= f.label :artist_id %>
+  <%= f.select :artist_id, Artist.all.map {|a| [a.name, a.id] } %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+
   <%= f.submit "create gig" %>
 <% end %>
