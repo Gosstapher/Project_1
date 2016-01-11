@@ -5,4 +5,8 @@
   <br>
 <% end %>
 <br>
+<% if can? :manage, :all %>
+<div>
 <%= link_to("Add new Gig", new_gig_path) %>
+</div>
+<% end %>

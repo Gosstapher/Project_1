@@ -9,6 +9,9 @@
   <p><%= @gig.venue.name %></p>
 
 </div>
-
+<% if can? :manage, @gig %>
+<div>
 <%= link_to("Edit #{@gig.name}", edit_gig_path(@gig)) %><br>
 <%= button_to("Delete #{@gig.name} ?", gig_path(@gig), method: :delete, data: {confirm: 'Delete #{@gig.name}? Are you sure?!'}) %>
+</div>
+<% end %>
