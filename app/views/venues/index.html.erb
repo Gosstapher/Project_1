@@ -5,4 +5,8 @@
   <br>
 <% end %>
 <br>
+<% if can? :manage, :all %>
+<div>
 <%= link_to("Add new Venue", new_venue_path) %>
+</div>
+<% end %>
