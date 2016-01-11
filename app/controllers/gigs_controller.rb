@@ -3,6 +3,11 @@ class GigsController < ApplicationController
   # before_action :authenticate_user!
   def index
     @gigs = Gig.all
+    if params[:search]
+        @gigs = Gig.search(params[:search]).order("created_at DESC")
+      else
+        @gigs = Gig.all.order("created_at DESC")
+      end
   end
 
   def new

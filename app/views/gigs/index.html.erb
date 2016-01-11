@@ -1,12 +1,11 @@
 <h1>List of Gigs</h1> 
-
 <% @gigs.each do |gig| %>
-  <%= link_to("#{gig.name}", gig_path(gig)) %>
-  <br>
+<%= link_to("#{gig.name}", gig_path(gig)) %>
+<br>
 <% end %>
 <br>
 <% if can? :manage, :all %>
 <div>
-<%= link_to("Add new Gig", new_gig_path) %>
+  <%= link_to("Add new Gig", new_gig_path) %>
 </div>
 <% end %>
