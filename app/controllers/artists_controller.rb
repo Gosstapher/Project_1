@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  
+  load_and_authorize_resource
   def index
     @artists = Artist.all
   end

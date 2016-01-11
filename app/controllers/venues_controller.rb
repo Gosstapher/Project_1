@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+  load_and_authorize_resource
   def index
     @venues = Venue.all
   end

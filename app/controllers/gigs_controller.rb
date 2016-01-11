@@ -1,4 +1,6 @@
 class GigsController < ApplicationController
+  load_and_authorize_resource
+  # before_action :authenticate_user!
   def index
     @gigs = Gig.all
   end
