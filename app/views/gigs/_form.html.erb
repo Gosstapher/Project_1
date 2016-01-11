@@ -16,6 +16,12 @@
   <br>
   <%= f.label :image %>
   <%= f.text_field :image %>
+  <br>
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time %>
+  <br>
+  <%= f.label :end_time %>
+  <%= f.datetime_select :end_time %>
 
   <%= f.submit "create gig" %>
 <% end %>
