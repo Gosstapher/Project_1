@@ -12,12 +12,10 @@
     <div class="go-left">
       <h1>Gig Booker</h1>
     </div>
-    <div class="search">
       <%= form_tag(gigs_path, :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Gigs" %>
           <%= submit_tag "Search", :name => nil %>
       <% end %>
-    </div>
     <div class="go-right">
       <ul>
         <li><a href="/">Home</a></li>

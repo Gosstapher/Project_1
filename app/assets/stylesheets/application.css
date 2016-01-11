@@ -21,6 +21,7 @@ nav {
   background-color: rgb(38, 45, 66);
   height: 65px;
   line-height: 65px;
+  position: relative;
 }
 
 nav h1 {
@@ -66,7 +67,10 @@ nav ul li a {
 }
 
 #search-form  {
-  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 

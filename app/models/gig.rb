@@ -13,3 +13,8 @@ class Gig < ActiveRecord::Base
   end
 
 end
+
+
+
+
+
