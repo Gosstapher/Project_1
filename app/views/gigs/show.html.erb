@@ -7,6 +7,14 @@
   <p><%= @gig.description %></p>
   <br>
   <p><%= @gig.venue.name %></p>
+  <br>
+
+  <p><%= @gig.start_time.strftime("%A %B %-d, %Y") %></p>
+  <br>
+  <p><%= @gig.start_time.strftime("%H:%M") %></p>
+  <br>
+  <p><%= @gig.end_time.strftime("%H:%M") %></p>
+
 
 </div>
 <% if can? :manage, @gig %>
