@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!
   def index
     @bookings = Booking.all
   end
 
   def new
     @booking = Booking.new
+    @gig = Gig.find(params[:gig_id])
   end
 
   def create
-    
-    Booking.create(booking_params.merge(user_id: current_user.id ))
+    # raise
+    @booking = current_user.bookings.create(booking_params)
+    # Booking.create(booking_params.merge(user_id: current_user.id ))
     redirect_to(bookings_path)
   end
 
@@ -31,12 +34,12 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to(booking_path)
+    redirect_to(bookings_path)
   end
 
   private
 
   def booking_params
-    params.permit(:gig_id, :ticket)
+    params.require(:booking).permit(:gig_id, :ticket)
   end
 end

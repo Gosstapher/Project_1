@@ -1,5 +1,13 @@
 <p>edit booking</p>
 
-<%= render "form" %>
+<%= form_for @booking do |f| %>
+  <%= f.label :ticket %>
+  <%= f.number_field :ticket %>
+  <br>
+  <%= f.label :gig_id %>
+  <%= f.number_field :gig_id %>
+  <br>
+  <%= f.submit "create booking" %>
+<% end %>
 
 <%= link_to "back", bookings_path %>

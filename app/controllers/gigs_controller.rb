@@ -1,6 +1,6 @@
 class GigsController < ApplicationController
   load_and_authorize_resource
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @gigs = Gig.all
     if params[:search]
@@ -16,7 +16,7 @@ class GigsController < ApplicationController
 
   def create
     gig = Gig.new(gig_params)
-    gig.save
+    
         if gig.gig_overlaps?(gig.venue_id)
           gig.save
         else

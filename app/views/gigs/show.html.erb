@@ -19,7 +19,7 @@
 
 <div>
 
-  <%= button_to("Book a ticket for #{@gig.name}", gig_bookings_path(@gig), method: :post) %>
+  <%= button_to("Book a ticket for #{@gig.name}", new_gig_booking_path(@gig), method: :get) %>
 
 <% if can? :manage, @gig %>
 <div>
