@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :gigs
+  resources :gigs do 
+    resources :bookings
+  end
   resources :venues
   resources :artists
   resources :bookings

@@ -24,5 +24,5 @@ class Gig < ActiveRecord::Base
     Gig.gigs_at_venue(venue_id).all? do |g|
       (g.start_time <= end_time) and (start_time >= g.end_time)  
       end
-    end
+  end
 end

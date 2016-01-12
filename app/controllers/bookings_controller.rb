@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
   end
 
   def create
-    Booking.create(booking_params)
+    
+    Booking.create(booking_params.merge(user_id: current_user.id ))
     redirect_to(bookings_path)
   end
 
@@ -36,6 +37,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :gig_id, :gigs, :users)
+    params.permit(:gig_id)
   end
 end
