@@ -37,6 +37,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.permit(:gig_id)
+    params.permit(:gig_id, :ticket)
   end
 end

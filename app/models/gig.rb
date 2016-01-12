@@ -7,6 +7,7 @@ class Gig < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :image, presence: true
   validates :description, presence: true
+  validates :capacity , presence: true
 
 
   def self.search(search)

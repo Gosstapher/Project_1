@@ -16,7 +16,7 @@ class GigsController < ApplicationController
 
   def create
     gig = Gig.new(gig_params)
-
+    gig.save
         if gig.gig_overlaps?(gig.venue_id)
           gig.save
         else
@@ -34,12 +34,15 @@ class GigsController < ApplicationController
   end
 
   def update
+
     @gig = Gig.find(params[:id])
-    if @gig.gig_overlaps?(@gig.venue_id)
-      @gig.update
-    else
-      flash[:alert] = "Venue already booked at that time!"
-    end
+    @gig.update(gig_params)
+    # if @gig.gig_overlaps?(@gig.venue_id)
+    #   @gig.update(gig_params)
+  
+    # else
+    #   flash[:alert] = "Venue already booked at that time!"
+    # end
     
     redirect_to(gigs_path)
   end
@@ -53,6 +56,6 @@ class GigsController < ApplicationController
   private
 
   def gig_params
-    params.require(:gig).permit(:name, :image, :description, :venue_id, :artist_id, :genre_id, :bookings, :users, :start_time, :end_time)
+    params.require(:gig).permit(:name, :image, :description, :venue_id, :artist_id, :genre_id, :bookings, :users, :start_time, :end_time, :capacity)
   end
 end
