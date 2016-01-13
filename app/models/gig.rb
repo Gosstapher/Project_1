@@ -9,21 +9,24 @@ class Gig < ActiveRecord::Base
   validates :description, presence: true
   validates :capacity , presence: true
 
+# ------------ based heavily on collaboration with Andrew Insley ----- #
+  scope :venue_check, -> (v_id){where("venue_id == ?", v_id)}
+  scope :finish_after,  -> (start_time){where("end_time > ?", start_time)}
+  scope :start_before, -> (end_time){where("start_time < ?", end_time)}
+  scope :overlap_check, -> (v_id,start_time,end_time){venue_check(v_id).finish_after(start_time).start_before(end_time)}
+# -------------------------------------------------------------------- #
 
   def self.search(search)
     where("name || description LIKE ?", "%#{search}%") 
   end
 
+  # def capacity_check
+  #   @max_capacity = capacity
+  #   @tickets_sold = 0
+  #   bookings.each do |booking|
+  #     booking.ticket += @tickets_sold
+  #   end
+  #   @tickets_left = @max_capacity - @tickets_sold
+  # end
 
-
-
-  def self.gigs_at_venue(venue_id_input)
-      where(venue_id:venue_id_input)
-  end
-
-  def gig_overlaps?(venue_id)
-    Gig.gigs_at_venue(venue_id).all? do |g|
-      (g.start_time <= end_time) and (start_time >= g.end_time)  
-      end
-  end
 end

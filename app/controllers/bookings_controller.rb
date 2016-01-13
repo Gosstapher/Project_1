@@ -2,7 +2,12 @@ class BookingsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   def index
+    if can? :manage, all:
     @bookings = Booking.all
+    else
+    @bookings = Booking.where(user_id: current_user.id)
+  end
+
   end
 
   def new

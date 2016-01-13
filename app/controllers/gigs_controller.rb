@@ -5,9 +5,9 @@ class GigsController < ApplicationController
     @gigs = Gig.all
     if params[:search]
         @gigs = Gig.search(params[:search]).order("created_at DESC")
-      else
+    else
         @gigs = Gig.all.order("created_at DESC")
-      end
+    end
   end
 
   def new
@@ -16,17 +16,21 @@ class GigsController < ApplicationController
 
   def create
     gig = Gig.new(gig_params)
-    
-        if gig.gig_overlaps?(gig.venue_id)
-          gig.save
-        else
-          flash[:alert] = "Venue already booked at that time!"
-        end
-    redirect_to(gigs_path)
+    # ------------ based heavily on collaboration with Andrew Insley ----- #
+      if Gig.overlap_check(gig.venue_id, gig.start_time, gig.end_time).empty? 
+            Gig.create(gig_params)
+            redirect_to(gigs_path)
+    # -------------------------------------------------------------------- #
+      else
+            flash[:alert] = "Venue already booked at this time"
+            redirect_to(new_gig_path)
+      end
   end
+
 
   def show
     @gig = Gig.find(params[:id])
+    
   end
 
   def edit
@@ -34,17 +38,24 @@ class GigsController < ApplicationController
   end
 
   def update
+    gig1 = Gig.find(params[:id])
+        start = gig1.start_time
+        finish = gig1.end_time
 
-    @gig = Gig.find(params[:id])
-    @gig.update(gig_params)
-    # if @gig.gig_overlaps?(@gig.venue_id)
-    #   @gig.update(gig_params)
-  
-    # else
-    #   flash[:alert] = "Venue already booked at that time!"
-    # end
-    
-    redirect_to(gigs_path)
+        gig2 = Gig.new(gig_params)
+
+        gig1.update({start_time:nil, end_time:nil})
+
+
+          if Gig.overlap_check(gig1.venue_id, gig2.start_time, gig2.end_time).empty? 
+            gig1.update(gig_params)
+            redirect_to(gigs_path)
+          else
+            gig1.update({start_time:start, end_time:finish})
+            flash[:alert] = "You can not update to that time venue already booked at this time"
+            redirect_to gig_path(gig_params)
+          
+          end
   end
 
   def destroy

@@ -12,7 +12,10 @@ class Ability
         #     comment.user == user
         # end
         can :read, [Gig, Venue, Artist]
-        can [:read, :create], Booking 
+        can :create, Booking 
+        can :read, Booking do |booking|
+            booking.user == user
+        end
     
     end
 
