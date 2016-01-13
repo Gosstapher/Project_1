@@ -4,7 +4,7 @@ class GigsController < ApplicationController
   def index
     @gigs = Gig.all
     if params[:search]
-        @gigs = Gig.search(params[:search]).order("created_at DESC")
+        @gigs = Gig.search(params[:search])#.order("created_at DESC")
     else
         @gigs = Gig.all.order("created_at DESC")
     end
@@ -30,6 +30,7 @@ class GigsController < ApplicationController
 
   def show
     @gig = Gig.find(params[:id])
+
     
   end
 
@@ -38,6 +39,7 @@ class GigsController < ApplicationController
   end
 
   def update
+    # ------- based heavily on collaboration with Andrew Insley and Beth Fraser---------- #
     gig1 = Gig.find(params[:id])
         start = gig1.start_time
         finish = gig1.end_time
@@ -56,6 +58,7 @@ class GigsController < ApplicationController
             redirect_to gig_path(gig_params)
           
           end
+    # ------------------------------------------------------------------------------------ #
   end
 
   def destroy

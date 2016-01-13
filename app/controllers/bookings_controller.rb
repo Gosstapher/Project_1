@@ -6,8 +6,7 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     else
     @bookings = Booking.where(user_id: current_user.id)
-  end
-
+    end
   end
 
   def new
@@ -16,9 +15,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    # raise
+    
     @booking = current_user.bookings.create(booking_params)
-    # Booking.create(booking_params.merge(user_id: current_user.id ))
+    
     redirect_to(bookings_path)
   end
 

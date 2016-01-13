@@ -1,5 +1,5 @@
 class Gig < ActiveRecord::Base
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   belongs_to :venue
   belongs_to :artist
@@ -17,7 +17,23 @@ class Gig < ActiveRecord::Base
 # -------------------------------------------------------------------- #
 
   def self.search(search)
-    where("name || description LIKE ?", "%#{search}%") 
+    # where("name || description LIKE ?", "%#{search}%") 
+    artists = Artist.where('name LIKE ?', "%#{search}%")
+    # keywords = Keyword.where('tag LIKE ?', "%#{search}%")
+    venues = Venue.where('name LIKE ?', "%#{search}%")
+    # acts = acts + keywords.map{|k| k.acts}.flatten.uniq
+    (artists.map{|a| a.gigs}.flatten + venues.map{|v| v.gigs}.flatten).uniq
+  end
+
+  def tickets_sold
+    tickets = self.bookings.map do |booking|
+      booking.ticket
+    end
+    tickets.inject(:+)
+  end
+
+  def tickets_left
+    self.capacity - self.tickets_sold
   end
 
   # def capacity_check
