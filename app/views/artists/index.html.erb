@@ -1,12 +1,18 @@
-<h1>List of Artists</h1> 
-
-<% @artists.each do |artist| %>
-  <%= link_to("#{artist.name}", artist_path(artist)) %>
-  <br>
-<% end %>
+<h1 class="gig-list">List of Artists</h1> 
+<main class="container">
+  <section class="row">
+    <% @artists.each do |artist| %>
+    <div class="grid grid-6">
+      <p><%= link_to("#{artist.name}", artist_path(artist)) %></p>
+      <%= link_to( image_tag(artist.image, alt:"No image", class: "gig-img"), artist_path(artist)) %>
+      <br>
+    </div>
+    <% end %>
+  </section>
+</main>
 <br>
 <% if can? :manage, :all %>
 <div>
-<%= link_to("Add new Artist", new_artist_path) %>
+  <%= link_to("Add new Artist", new_artist_path) %>
 </div>
 <% end %>

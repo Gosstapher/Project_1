@@ -3,7 +3,7 @@
   <h4>Genre: <%= @gig.genre.name.capitalize %></h3>
   
   <br>
-  <img src=<%= @gig.image %>>
+  <%= link_to( image_tag(@gig.image, alt:"No image", class: "gig-img"), artist_path(@gig.artist)) %>
   <br>
   <p><%= @gig.description %></p>
   <br>

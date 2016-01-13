@@ -26,7 +26,7 @@ class Gig < ActiveRecord::Base
     tickets = self.bookings.map do |booking|
       booking.ticket
     end
-    tickets.inject(:+)
+    tickets.inject(0){|sum, x| sum += x}
   end
 
   def tickets_left

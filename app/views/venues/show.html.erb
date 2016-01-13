@@ -1,10 +1,10 @@
 <h1><%= @venue.name %></h1>
 <div>
-  <p><%= @venue.image %></p>
+  <img src=<%= @venue.image %>>
   <br>
   <p><%= @venue.description %></p>
   <br>
-  <p><%= @venue.location %></p>
+  <h5>location:</h5><p><%= @venue.location %></p>
 
 </div>
 <% if can? :manage, :all %>
