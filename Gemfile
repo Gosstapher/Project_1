@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'seed_dump'
 gem 'devise'
 gem 'cancancan'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
