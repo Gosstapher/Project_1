@@ -20,9 +20,11 @@
 </div>
 
 <div>
-
+<% if @gig.tickets_left > 0 %>
   <%= button_to("Book a ticket for #{@gig.name}", new_gig_booking_path(@gig), method: :get) %>
-
+<% else %>
+  <h3>"There are no more tickets available"</h3>
+<% end %>
 <% if can? :manage, @gig %>
 <div>
 <%= link_to("Edit #{@gig.name}", edit_gig_path(@gig)) %><br>
