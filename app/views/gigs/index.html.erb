@@ -1,11 +1,18 @@
-<h1>List of Gigs</h1> 
-<% @gigs.each do |gig| %>
-<%= link_to("#{gig.name}", gig_path(gig)) %>
-<br>
-<% end %>
-<br>
-<% if can? :manage, :all %>
-<div>
-  <%= link_to("Add new Gig", new_gig_path) %>
-</div>
-<% end %>
+<h1 class="gig-list">List of Gigs</h1> 
+<main class="container">
+  <section class="row">
+    <% @gigs.each do |gig| %>
+    <div class="grid grid-6">
+    <p><%= link_to("#{gig.name}", gig_path(gig)) %><p>
+    <%= link_to( image_tag(gig.image, alt:"No image", class: "gig-img"), gig_path(gig)) %>
+    <br>
+    </div>
+    <% end %>
+    <br>
+    <% if can? :manage, :all %>
+    <div>
+      <%= link_to("Add new Gig", new_gig_path) %>
+    </div>
+    <% end %>
+  </section>
+</main>

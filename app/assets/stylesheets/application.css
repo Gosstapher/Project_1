@@ -14,11 +14,11 @@ body section a {
 }
 
 body h1 {
-  color: darkgoldenrod;
+  color: #3d3d5c;
 }
 
 nav {
-  background-color: rgb(38, 45, 66);
+  background-color: #5F5F5F;
   height: 65px;
   line-height: 65px;
   position: relative;
@@ -30,6 +30,7 @@ nav h1 {
   line-height: 65px;
   margin: 0px; 
   padding-left: 20px;
+  color: #f1f1f1;
 }
 
 nav ul {
@@ -73,8 +74,83 @@ nav ul li a {
 
 }
 
+.gig-list {
+  text-align: center;
+  text-decoration: underline;
+}
 
+.gig-img {
+  width: 400px;
+  height: 320px;
+}
 
+/* GRID FRAMEWORK */
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.row {
+  display: block;
+  margin: 0 -10px;
+}
+
+.grid {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -4px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.grid-1 {
+  width: 8.333333%;
+}
+
+.grid-2 {
+  width: 16.666666%
+}
+
+.grid-3 {
+  width: 25%
+}
+
+.grid-4 {
+  width: 33.333333%
+}
+
+.grid-5 {
+  width: 41.666666%
+}
+
+.grid-6 {
+  width: 50%
+}
+
+.grid-7 {
+  width: 58.333333%
+}
+
+.grid-8 {
+  width: 66.666666%
+}
+
+.grid-9 {
+  width: 75%
+}
+
+.grid-10 {
+  width: 83.333333%
+}
+
+.grid-11 {
+  width: 91.666666%
+}
+
+.grid-12 {
+  width: 100%
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

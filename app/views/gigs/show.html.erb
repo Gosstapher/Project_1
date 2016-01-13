@@ -1,8 +1,9 @@
 <h1><%= @gig.name %></h1>
 <div>
-  <p><%= @gig.genre.name %></p>
+  <h4>Genre: <%= @gig.genre.name.capitalize %></h3>
+  
   <br>
-  <p><%= @gig.image %></p>
+  <img src=<%= @gig.image %>>
   <br>
   <p><%= @gig.description %></p>
   <br>
