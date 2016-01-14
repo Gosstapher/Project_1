@@ -17,9 +17,10 @@ class Gig < ActiveRecord::Base
 # -------------------------------------------------------------------- #
 
   def self.search(search)
+    gigs = Gig.where('name || description LIKE ?', "%#{search}%")
     artists = Artist.where('name LIKE ?', "%#{search}%")
     venues = Venue.where('name LIKE ?', "%#{search}%")
-    (artists.map{|a| a.gigs}.flatten + venues.map{|v| v.gigs}.flatten).uniq
+    (artists.map{|a| a.gigs}.flatten + venues.map{|v| v.gigs}.flatten + gigs.flatten).uniq
   end
 
   def tickets_sold

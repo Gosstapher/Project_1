@@ -7,17 +7,27 @@
   <br>
   <p><%= @gig.description %></p>
   <br>
+  <h5>Venue</h5>
   <p><%= @gig.venue.name %></p>
   <img src=<%= @gig.venue.image %> class="ven-img">
   <br>
+  <h5>Artist</h5>
+  <p><%= @gig.artist.name %></p>
+  <img src=<%= @gig.artist.image %> class="ven-img">
+  <br>
+  <h5>Gig Capacity</h5>
   <p><%= @gig.capacity %></p>
   <br>
+  <h5>Tickets Remaining</h5>
   <p><%= @gig.tickets_left %></p>
   <br>
+  <h5>Performance Date</h5>
   <p><%= @gig.start_time.strftime("%A %B %-d, %Y") %></p>
   <br>
+  <h5>Perfomance Starts</h5>
   <p><%= @gig.start_time.strftime("%H:%M") %></p>
   <br>
+  <h5>Performance Ends</h5>
   <p><%= @gig.end_time.strftime("%H:%M") %></p>
 </div>
 
