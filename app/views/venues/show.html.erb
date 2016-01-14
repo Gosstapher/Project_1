@@ -5,8 +5,18 @@
   <p><%= @venue.description %></p>
   <br>
   <h5>location:</h5><p><%= @venue.location %></p>
-
 </div>
+<main class="container">
+  <section class="row">
+    <% @venue.gigs.each do |gig| %>
+    <div class="grid grid-6">
+      <p><%= link_to("#{gig.name}", gig_path(gig)) %><p>
+        <%= link_to( image_tag(gig.image, alt:"No image", class: "gig-img"), gig_path(gig)) %>
+        <br>
+      </div>
+      <% end %>
+        </section>
+      </main>
 <% if can? :manage, :all %>
 <div>
 <%= link_to("Edit #{@venue.name}", edit_venue_path(@venue)) %><br>

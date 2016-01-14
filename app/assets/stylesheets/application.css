@@ -84,6 +84,11 @@ nav ul li a {
   height: 320px;
 }
 
+.ven-img {
+  width: 200px;
+  height: 160px;
+}
+
 /* GRID FRAMEWORK */
 
 .container {

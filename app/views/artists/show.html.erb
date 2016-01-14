@@ -3,8 +3,18 @@
   <img src=<%= @artist.image %>>
   <br>
   <p><%= @artist.description %></p>
-
 </div>
+<main class="container">
+  <section class="row">
+    <% @artist.gigs.each do |gig| %>
+    <div class="grid grid-6">
+      <p><%= link_to("#{gig.name}", gig_path(gig)) %><p>
+        <%= link_to( image_tag(gig.image, alt:"No image", class: "gig-img"), gig_path(gig)) %>
+        <br>
+      </div>
+      <% end %>
+        </section>
+      </main>
 <% if can? :manage, :all %>
 <div>
 <%= link_to("Edit #{@artist.name}", edit_artist_path(@artist)) %><br>
