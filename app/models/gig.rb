@@ -23,6 +23,13 @@ class Gig < ActiveRecord::Base
     (artists.map{|a| a.gigs}.flatten + venues.map{|v| v.gigs}.flatten + gigs.flatten).uniq
   end
 
+  def self.get_random_gigs
+    gigs = Gig.all
+    gig_ids = gigs.map {|g| g.id}
+    gig_ids.sample(3)
+
+  end
+
   def tickets_sold
     tickets = self.bookings.map do |booking|
       booking.ticket
@@ -34,13 +41,11 @@ class Gig < ActiveRecord::Base
     self.capacity - self.tickets_sold
   end
 
-  # def capacity_check
-  #   @max_capacity = capacity
-  #   @tickets_sold = 0
-  #   bookings.each do |booking|
-  #     booking.ticket += @tickets_sold
-  #   end
-  #   @tickets_left = @max_capacity - @tickets_sold
-  # end
+  def list
+    gigs = Gig.all
+    gigs.each do |g|
+      g.image
+    end
+  end
 
 end

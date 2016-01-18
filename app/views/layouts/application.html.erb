@@ -12,20 +12,19 @@
     <div class="go-left">
       <h1>Gig Booker</h1>
     </div>
-      <%= form_tag(gigs_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Gigs" %>
-          <%= submit_tag "Search", :name => nil %>
-      <% end %>
+    <%= form_tag(gigs_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Gigs" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% end %>
     <div class="go-right">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/venues">Venues</a></li>
         <% if can? :manage, :all %>
-          <li><a href="/genres">Genres</a></li>
+        <li><a href="/genres">Genres</a></li>
         <% end %>
         <li><a href="/artists">Artists</a></li>
         <li><a href="/bookings">Bookings</a></li>
-        <!-- <li><a href="/users">Users</a></li> -->
       </ul>
     </div>  
   </nav>
@@ -35,12 +34,12 @@
   <p class="alert"><%= alert %></p>
 
   <% if current_user %>
-    <%= current_user.name %><%= ", #{current_user.role.capitalize}" if current_user.role %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <%= link_to 'Edit Account', edit_user_registration_path %>
+  <%= current_user.name %><%= ", #{current_user.role.capitalize}" if current_user.role %>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'Edit Account', edit_user_registration_path %>
   <% else %>
-    <%= link_to 'Log In', new_user_session_path %>
-    <%= link_to 'Sign Up', new_user_registration_path %>
+  <%= link_to 'Log In', new_user_session_path %>
+  <%= link_to 'Sign Up', new_user_registration_path %>
   <% end %>
 
   <%= yield %>
