@@ -1,5 +1,6 @@
 <h1><%= @genre.name %></h1>
-
-
+<% @genre.gigs.each do |g| %>
+<%= link_to( image_tag(g.image, alt:"No image", class: "gig-img"), gig_path(g)) %>
+<% end %>
 <%= link_to("Edit #{@genre.name}", edit_genre_path(@genre)) %><br>
 <%= button_to("Delete #{@genre.name} ?", genre_path(@genre), method: :delete, data: {confirm: 'Delete #{@genre.name}? Are you sure?!'}) %>
