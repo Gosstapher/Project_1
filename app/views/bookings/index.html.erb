@@ -3,7 +3,8 @@
 <% @bookings.each do |booking| %>
   
   <%= link_to("#{booking.id}", booking_path(booking)) %>
-
+  <br>
+  <p><%= booking.user.name %> is seeing : <%= booking.gig.name %></p>
   <br>
 <% end %>
 <br>

@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   before_action :authenticate_user!
   def index
     @artists = Artist.all
