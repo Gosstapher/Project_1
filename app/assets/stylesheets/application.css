@@ -94,13 +94,13 @@ nav ul li a {
 }
 
 .right-bar {
-  width: 33%;
+  width: 50%;
   margin : 0 auto;
   float: right;
 }
 
 .front-page {
-  width: 90%;
+  width: 100%;
 }
 
 /* GRID FRAMEWORK */

@@ -26,7 +26,7 @@ class Gig < ActiveRecord::Base
   def self.get_random_gigs
     gigs = Gig.all
     gig_ids = gigs.map {|g| g.id}
-    gig_ids.sample(3)
+    gig_ids.sample(4)
 
   end
 
