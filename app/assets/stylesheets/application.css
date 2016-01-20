@@ -93,6 +93,11 @@ nav ul li a {
   height: 160px;
 }
 
+.right-bar {
+  width: 25%;
+  margin : 0 auto;
+}
+
 /* GRID FRAMEWORK */
 
 .container {
